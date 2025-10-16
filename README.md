@@ -30,11 +30,12 @@ Cấu trúc chính
 
 1) Trang chủ và danh mục/sản phẩm
 - `HomeScreen.js`:
-  - Tải banner, danh mục, danh sách sản phẩm phân trang (All) và lọc theo danh mục.
+  - Tải banner, danh mục, danh sách sản phẩm phân trang (All) và lọc theo danh mục, tìm kiếm theo tên.
   - Các khối: Top sale, Sản phẩm mới (phân trang ngang), gợi ý “Có thể bạn sẽ thích”.
   - Điều hướng nhanh đáy: Home, Cart, Notification, Profile.
   - Refresh dữ liệu sau thanh toán thành công (dựa trên AsyncStorage flags).
-
+  = AI chatbot tư vấn sản phẩm
+    
 2) Chi tiết sản phẩm và đánh giá
 - `ProductDetailScreen.js`:
   - Lấy dữ liệu sản phẩm theo `id`, tự chọn biến thể còn hàng đầu tiên, hiển thị ảnh theo biến thể.
@@ -67,7 +68,7 @@ Cấu trúc chính
   - Nhập từ khóa, gọi API search, hiển thị danh sách kết quả và điều hướng chi tiết.
 
 6) Tài khoản và hồ sơ
-- `LoginScreen.js`, `SignUpScreen.js`, `ForgotPassword.js`, `OtpScreen.js`, `ResetPassword.js`, `ChangePassword.js`:
+- `LoginScreen.js`, `SignUpScreen.js((OTP/email))`, `ForgotPassword.js`, `OtpScreen.js`, `ResetPassword.js`, `ChangePassword.js`:
   - Đăng nhập, đăng ký, quên mật khẩu (OTP/email), đổi mật khẩu.
 - `ProfileScreen.js`, `EditProfileScreen.js`:
   - Xem/sửa thông tin cá nhân, điều hướng tới lịch sử đơn, địa chỉ, thông báo, chat.
@@ -115,8 +116,8 @@ Cấu trúc chính
 
 Luồng chính (tóm tắt)
 - Khám phá: Home → xem danh mục/sản phẩm → ProductDetail.
-- Mua hàng: ProductDetail → Thêm giỏ hoặc Mua ngay → Cart/Checkout → chọn địa chỉ/voucher/phương thức thanh toán → tạo đơn → PaymentSuccess.
-- Sau mua: OrderScreen → lọc theo trạng thái → OrderDetail/Tracking → Đánh giá/Trả hàng/Mua lại.
+- Mua hàng: ProductDetail → Thêm giỏ hàng hoặc Mua ngay → Cart/Checkout → Chọn địa chỉ / voucher / phương thức thanh toán → Tạo đơn hàng → Admin xác nhận đơn → Gửi đơn đến kho gần khu vực người mua (ví dụ: "Hà Nội") → Shipper khu vực đó nhận đơn và giao hàng → PaymentSuccess.
+- Sau mua: OrderScreen → lọc theo trạng thái → OrderDetail/Tracking → Đánh giá(check ảnh nhạy cảm bằng AI nudecheck)/Trả hàng/Mua lại.
 - Tiện ích: Thông báo đẩy cập nhật sản phẩm/đơn; Chat hỗ trợ; Tìm kiếm.
 
 Lưu ý tích hợp
